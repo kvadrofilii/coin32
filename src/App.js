@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Wrapper from './layouts/Wrapper';
+import { useDispatch } from 'react-redux';
+import { getGames } from './app/reducers/games';
+import GameListPage from './pages/GameListPage';
+import GameProfilePage from './pages/GameProfilePage';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGames('https://rawg.io/api/games?key=3ab57b62be844a19885e0fffc9bdd397&page_size=20&page=1'));
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path={'/'} element={<Wrapper />} >
+        <Route index element={<GameListPage />} />
+        <Route path={'game/:slug'} element={<GameProfilePage />} />
+      </Route>
+    </Routes>
   );
 }
 

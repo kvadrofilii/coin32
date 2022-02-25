@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+Требуется реализовать web-приложение - “витрину” игр наподобие https://rawg.io/ или https://web.archive.org/web/20180831053229/https://gamegid.online/ на базе API https://rawg.io/apidocs.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Приложение будет состоять из двух страниц:
+- главная, каталог игр:
+	- **Необходимый функционал**
+  	- Пагинация (в идеале, бесконечный скролл)
+  	- Сортировка по: рейтингу и дате релиза игры (в обе стороны)
+  	- Фильтрация по платформам
+  	- Поиск по названию
+  - **Содержимое каждой “плитки” игры:**
+  	- Название
+  	- Постер
+  	- Рейтинг
+  	- Дата релиза
+- /game/[slug] - страница игры, на которую можно попасть, кликнув на плитку игры в каталоге, должна содержать более полную информацию об игре (помимо имевшейся на плитке):
+	- Описание
+	- Ссылка на сайт игры
+	- Слайдер со скриншотами игры
 
-## Available Scripts
+## Требования:
+- Реализация на React
+- Код на ES6 (без TypeScript)
+- Адаптивная mobile-first вёрстка
+- Сборка на webpack (ваш пример должен запуститься через npm i && npm start)
+- Вёрстка с нуля без использования UI-библиотек типа MaterialUI (нам важнее оценить, как вы верстаете с нуля, чем итоговые “рюшки” и красота)
 
-In the project directory, you can run:
+## Особым плюсом будет:
+- Реализация в виде SSR-приложения на Next.js
+- Вёрстка с использованием styled components
 
-### `npm start`
+Ориентировочное время выполнения - 8 часа. Максимальное - 16 часов.  Тестовое задание необходимо предоставить на почту team@coin32.com в виде ссылки на открытый репозиторий. Заголовок письма должен иметь вид "Тестовое Frontend разработчика: Имя Фамилия". Срок сдачи обсуждается индивидуально с HR.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
