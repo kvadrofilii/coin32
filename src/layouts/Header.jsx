@@ -11,6 +11,7 @@ const Wrapper = styled.header`
 	width: 100%;
 	border-bottom: 3px solid ${baseTheme.colors.dark};
 	flex-shrink: 0;
+	z-index: 10;
 
 	@media (min-width: ${baseTheme.media.tablet}) {
 		height: 100px;
@@ -35,6 +36,7 @@ const Content = styled.header`
 	row-gap: 20px;
 	column-gap: 20px;
 	justify-items: center;
+	z-index: 11;
 
 	@media (min-width: ${baseTheme.media.tablet}) {
 		display: flex;

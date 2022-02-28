@@ -11,6 +11,7 @@ export const SelectUl = styled.ul`
 	background-color: ${baseTheme.colors.dark};
 	list-style: none;
 	border-radius: 10px;
+	z-index: 22;
 
 	li {
 		width: 100%;
@@ -19,6 +20,7 @@ export const SelectUl = styled.ul`
 		align-items: center;
 		padding: 5px 10px;
 		cursor: pointer;
+		z-index: 23;
 
 		:hover {
 			background-color: #aaa;
