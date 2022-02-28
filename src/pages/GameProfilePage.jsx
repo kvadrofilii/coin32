@@ -20,9 +20,6 @@ const Image = styled.img`
 	object-position: center top;
 	object-fit: cover;
 	border-radius: 10px;
-
-	@media (min-width: ${baseTheme.media.tablet}) {
-	}
 `;
 
 const ImageScreenshot = styled(Image)`
@@ -54,10 +51,16 @@ const Description = styled.p`
 
 const Ul = styled.ul`
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	align-items: flex-start;
 	margin: 0;
 	padding: 0;
 	list-style: none;
+
+	@media (min-width: ${baseTheme.media.tablet}) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
 	li {
 		padding-top: 5px;
