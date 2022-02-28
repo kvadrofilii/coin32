@@ -1,7 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { stateUrl, stateGames } from '../app/reducers/games';
+import styled from 'styled-components';
 import { Select } from '../styles/components/Select';
+import { SelectUl } from '../styles/components/SelectUl';
+
+const SortList = styled(SelectUl)`
+	top: 0;
+`;
 
 const Sort = () => {
 	const platforms = [
@@ -112,9 +118,9 @@ const Sort = () => {
 			<div onClick={handleOpen}>{select}</div>
 			{
 				isOpen && (
-					<ul>
+					<SortList>
 						{sortOutput(platforms)}
-					</ul>
+					</SortList>
 				)
 			}
 		</Select>

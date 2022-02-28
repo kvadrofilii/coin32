@@ -1,7 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { stateUrl } from '../app/reducers/games';
+import styled from 'styled-components';
 import { Select } from '../styles/components/Select';
+import { SelectUl } from '../styles/components/SelectUl';
+
+const PlatformsList = styled(SelectUl)`
+	top: 0;
+`;
 
 const Platforms = () => {
 	const platforms = [
@@ -100,9 +106,9 @@ const Platforms = () => {
 			<div onClick={handleOpen}>{select}</div>
 			{
 				isOpen && (
-					<ul>
+					<PlatformsList>
 						{platformOutput(platforms)}
-					</ul>
+					</PlatformsList>
 				)
 			}
 		</Select>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { baseTheme } from '../styles/theme';
 import { Input } from '../styles/components/Input';
+import { SelectUl } from '../styles/components/SelectUl';
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,34 +8,8 @@ const Wrapper = styled.div`
 	position: relative;
 `;
 
-const Ul = styled.ul`
-	width: 250px;
-	max-height: 200px;
-	margin: 5px 0 0 0;
-	padding: 0;
-	position: absolute;
-	overflow: scroll;
-	background-color: ${baseTheme.colors.dark};
-	list-style: none;
-	border-radius: 10px;
-
-	li {
-		padding: 5px 10px;
-		cursor: pointer;
-
-		:hover {
-			background-color: #aaa;
-		}
-
-		:active {
-			background-color: #bbb;
-		}
-	}
-
-	a {
-		display: block;
-		color: ${baseTheme.colors.font};
-	}
+const SearchList = styled(SelectUl)`
+	margin-top: 5px;
 `;
 
 
@@ -116,9 +90,9 @@ const Search = () => {
 
 			{
 				isOpen && (
-					<Ul>
+					<SearchList>
 						{list}
-					</Ul>
+					</SearchList>
 				)
 			}
 
