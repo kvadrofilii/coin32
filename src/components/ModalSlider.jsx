@@ -50,6 +50,7 @@ const Image = styled.img`
 	object-fit: cover;
 	border-radius: 10px;
 	flex-shrink: 0;
+	cursor: pointer;
 `;
 
 const ModalSlider = (props) => {
