@@ -91,7 +91,6 @@ const onClickImage = (number, setModalIsActive, setImageNumber) => {
 
 const GameProfilePage = () => {
 	const { slug } = useParams();
-	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(true);
 	const [game, setGame] = useState({});
 	const [screenshots, setScreenshots] = useState({});
@@ -104,22 +103,15 @@ const GameProfilePage = () => {
 			`https://rawg.io/api/games/${slug}/screenshots?key=3ab57b62be844a19885e0fffc9bdd397`
 		];
 
-		Promise.all(urls.map(url =>
-			fetch(url)
-				.then(response => response.json())
-				.catch(error => console.log('There was a problem!', error))
+		Promise.all(urls.map(url => fetch(url)
+			.then(response => response.json())
+			.catch(error => console.log('Error:', error))
 		))
-			.then(
-				(result) => {
-					setGame(result[0]);
-					setScreenshots(result[1]);
-					setIsLoaded(false);
-				},
-				(error) => {
-					setError(error);
-					setIsLoaded(false);
-				}
-			)
+			.then((result) => {
+				setGame(result[0]);
+				setScreenshots(result[1]);
+				setIsLoaded(false);
+			});
 	}, [slug]);
 
 	// Функция вывода скриншотов
@@ -143,54 +135,52 @@ const GameProfilePage = () => {
 	};
 
 
-	if (error) {
-		return <div>Error: {error.message}</div>;
-	} else if (isLoaded) {
+	if (isLoaded) {
 		return <div>Loading...</div>;
-	} else {
-		return (
-			<Wrapper>
-				<ContentWrapper>
-					<Title>{game.name}</Title>
-					<hr />
-					<Ul>
-						<li>
-							Release date: {dateReleased(game.released)}
-						</li>
-						<li>
-							Rating: {game.rating}
-						</li>
-						<li>
-							<A
-								href={game.website}
-								target='_blank'
-								rel='nofollow noopener noreferrer'
-							>
-								Website
-							</A>
-						</li>
-					</Ul>
-					<Subtitle>About</Subtitle>
-					<Description>{game.description_raw}</Description>
-				</ContentWrapper>
-
-				<ImageWrapper>
-					<Image src={game.background_image} />
-
-					<Screenshots>
-						{screenshotsOutput(screenshots)}
-					</Screenshots>
-				</ImageWrapper>
-
-				<ModalSlider
-					active={modalIsActive}
-					setModalIsActive={setModalIsActive}
-					screenshots={screenshots}
-					imageNumber={imageNumber}
-				/>
-			</Wrapper>
-		);
 	}
+
+	return (
+		<Wrapper>
+			<ContentWrapper>
+				<Title>{game.name}</Title>
+				<hr />
+				<Ul>
+					<li>
+						Release date: {dateReleased(game.released)}
+					</li>
+					<li>
+						Rating: {game.rating}
+					</li>
+					<li>
+						<A
+							href={game.website}
+							target='_blank'
+							rel='nofollow noopener noreferrer'
+						>
+							Website
+						</A>
+					</li>
+				</Ul>
+				<Subtitle>About</Subtitle>
+				<Description>{game.description_raw}</Description>
+			</ContentWrapper>
+
+			<ImageWrapper>
+				<Image src={game.background_image} />
+
+				<Screenshots>
+					{screenshotsOutput(screenshots)}
+				</Screenshots>
+			</ImageWrapper>
+
+			<ModalSlider
+				active={modalIsActive}
+				setModalIsActive={setModalIsActive}
+				screenshots={screenshots}
+				imageNumber={imageNumber}
+			/>
+		</Wrapper>
+	);
 }
 
 export default GameProfilePage;
