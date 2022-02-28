@@ -80,9 +80,15 @@ const ModalSlider = (props) => {
 		}
 	}
 
+	const closeSlider = () => {
+		setModalIsActive(false);
+		const body = document.body;
+		body.style.overflowY = '';
+	}
+
 	return (
 		<Wrapper active={active} >
-			<ButtonClose onClick={() => setModalIsActive(false)}>X</ButtonClose>
+			<ButtonClose onClick={closeSlider}>X</ButtonClose>
 
 			<Control>
 				<Button onClick={prevSlide}>&#060;</Button>
