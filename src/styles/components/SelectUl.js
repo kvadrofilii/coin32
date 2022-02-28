@@ -13,6 +13,7 @@ export const SelectUl = styled.ul`
 	border-radius: 10px;
 
 	li {
+		width: 100%;
 		height: 40px;
 		display: flex;
 		align-items: center;
@@ -26,10 +27,13 @@ export const SelectUl = styled.ul`
 		:active {
 			background-color: #bbb;
 		}
-	}
 
-	a {
-		display: block;
-		color: ${baseTheme.colors.font};
+		a {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			color: ${baseTheme.colors.font};
+		}
 	}
 `;
