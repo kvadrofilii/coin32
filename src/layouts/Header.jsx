@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { baseTheme } from '../styles/theme';
 import { Container } from '../styles/layouts/Container';
+import { Logo } from '../styles/components/Logo';
 import Search from '../components/Search';
 import { Link } from 'react-router-dom';
 import Platforms from '../components/Platforms';
@@ -15,16 +16,6 @@ const Wrapper = styled.header`
 
 	@media (min-width: ${baseTheme.media.tablet}) {
 		height: 100px;
-	}
-`;
-
-const Logo = styled.span`
-	color: ${baseTheme.colors.font};
-	font-size: 2rem;
-	font-weight: 700;
-
-	@media (min-width: ${baseTheme.media.tablet}) {
-		margin-right: 20px;
 	}
 `;
 
