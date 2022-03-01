@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 	left: 0;
 	background-color: rgba(0,0,0,0.9);
 	transform: ${props => props.active ? 'scale(1)' : 'scale(0)'};
+	z-index: 100;
 `;
 
 const ButtonClose = styled(Button)`
