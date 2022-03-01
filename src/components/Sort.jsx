@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { stateUrl, stateGames } from '../app/reducers/games';
+import { getGames, stateGames } from '../app/reducers/games';
 import styled from 'styled-components';
 import { Select } from '../styles/components/Select';
 import { SelectUl } from '../styles/components/SelectUl';
@@ -45,9 +45,7 @@ const Sort = () => {
 	useEffect(() => {
 		// Функция закрывает список для сортировки при нажатии вне инпута и списка
 		function handleClickOutside(event) {
-			if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-				setOpen(false);
-			}
+			(wrapperRef.current && !wrapperRef.current.contains(event.target)) && setOpen(false);
 		}
 		// Вешаем слушатель нажатия кнопки мышки
 		document.addEventListener('mousedown', handleClickOutside);
@@ -67,7 +65,7 @@ const Sort = () => {
 
 		switch (value) {
 			case 'pelevance': {
-				dispatch(stateUrl('https://rawg.io/api/games?key=3ab57b62be844a19885e0fffc9bdd397&page=1&page_size=12'));
+				dispatch(getGames(url));
 				break;
 			}
 
