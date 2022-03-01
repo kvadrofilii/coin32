@@ -40,9 +40,8 @@ const Platforms = () => {
 	useEffect(() => {
 		// Функция закрывает список платформ при нажатии вне инпута и списка
 		function handleClickOutside(event) {
-			if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-				setOpen(false);
-			}
+			(wrapperRef.current && !wrapperRef.current.contains(event.target)) && setOpen(false);
+
 		}
 		// Вешаем слушатель нажатия кнопки мышки
 		document.addEventListener('mousedown', handleClickOutside);

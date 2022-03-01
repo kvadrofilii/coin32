@@ -43,9 +43,7 @@ const Search = () => {
 	useEffect(() => {
 		// Функция закрывает список найденных игр при нажатии вне инпута и списка
 		function handleClickOutside(event) {
-			if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-				setOpen(false);
-			}
+			(wrapperRef.current && !wrapperRef.current.contains(event.target)) && setOpen(false);
 		}
 
 		// Вешаем слушатель нажатия кнопки мышки

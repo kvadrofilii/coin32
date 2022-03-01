@@ -66,20 +66,12 @@ const ModalSlider = (props) => {
 
 	// Переключаем на предыдущий слайд
 	const prevSlide = () => {
-		if (slide === 0) {
-			setSlide(images.length - 1);
-		} else {
-			setSlide(slide - 1);
-		}
+		(slide === 0) ? setSlide(images.length - 1) : setSlide(slide - 1);
 	}
 
 	// Переключаем на следующий слайд
 	const nextSlide = () => {
-		if (slide === images.length - 1) {
-			setSlide(0);
-		} else {
-			setSlide(slide + 1);
-		}
+		(slide === images.length - 1) ? setSlide(0) : setSlide(slide + 1);
 	}
 
 	const closeSlider = () => {
