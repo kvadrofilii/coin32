@@ -4,10 +4,7 @@ const getGames = createAsyncThunk(
 	'games/getGames',
 	async (url) => {
 		const response = await fetch(url);
-		if (response.ok) {
-			const result = await response.json();
-			return result;
-		}
+		return response.ok && response.json();
 	}
 );
 
