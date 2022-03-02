@@ -22,8 +22,9 @@ const Wrapper = styled.div`
 	}
 `;
 
+// Формирует карточки с играми для вывода на основе полученных данных с сервера
 const gameList = (games) => {
-	const result = games.map((item) =>
+	return games.map((item) =>
 		<GameCard
 			key={item.id}
 			name={item.name}
@@ -33,30 +34,23 @@ const gameList = (games) => {
 			slug={item.slug}
 		/>
 	);
-	return result;
 }
 
 
 const GameListPage = () => {
 	const dispatch = useDispatch();
+	// Переменные для: данных с играми, состояния загрузки и адреса для загрузки данных с сервера
 	const { games, isLoaded, url } = useSelector((state) => state.games);
 
+	// Получаем данные по играм с сервера
 	useEffect(() => {
 		dispatch(getGames(url));
 	}, [dispatch, url]);
 
 
-	if (isLoaded) {
-		return <div>Loading...</div>;
-	}
-
-	return (
-		<Wrapper>
-			{
-				gameList(games)
-			}
-		</Wrapper>
-	);
+	return (isLoaded) ?
+		<div>Loading...</div> :
+		<Wrapper>{gameList(games)}</Wrapper>;
 }
 
 export default GameListPage;
