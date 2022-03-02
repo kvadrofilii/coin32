@@ -13,7 +13,7 @@ const Sort = () => {
 	const platforms = [
 		{
 			name: 'Relevance',
-			value: 'pelevance'
+			value: 'relevance'
 		},
 		{
 			name: 'Rating ↑',
@@ -44,15 +44,14 @@ const Sort = () => {
 
 	useEffect(() => {
 		// Функция закрывает список для сортировки при нажатии вне инпута и списка
-		function handleClickOutside(event) {
+		const handleClickOutside = (event) => {
 			(wrapperRef.current && !wrapperRef.current.contains(event.target)) && setOpen(false);
-		}
+		};
 		// Вешаем слушатель нажатия кнопки мышки
 		document.addEventListener('mousedown', handleClickOutside);
 		// Отключаем слушатель при размонтировании компонента
-		return () => {
+		return () =>
 			document.removeEventListener('mousedown', handleClickOutside);
-		};
 	}, [wrapperRef]);
 
 	// Функция открытия списка платформ
@@ -64,7 +63,7 @@ const Sort = () => {
 		setOpen(false);
 
 		switch (value) {
-			case 'pelevance': {
+			case 'relevance': {
 				dispatch(getGames(url));
 				break;
 			}
@@ -104,10 +103,9 @@ const Sort = () => {
 
 	// Выводим список сортировки
 	const sortOutput = (data) => {
-		const result = data.map((item) => {
+		return data.map((item) => {
 			return <li key={item.value} onClick={() => handleClick(item.name, item.value)}>{item.name}</li>;
 		});
-		return result;
 	}
 
 
