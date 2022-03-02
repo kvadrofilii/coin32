@@ -10,6 +10,7 @@ const PlatformsList = styled(SelectUl)`
 `;
 
 const Platforms = () => {
+	// Список платформ и value для 
 	const platforms = [
 		{
 			name: 'Platforms',
@@ -38,49 +39,50 @@ const Platforms = () => {
 	const wrapperRef = useRef(null);
 
 	useEffect(() => {
-		// Функция закрывает список платформ при нажатии вне инпута и списка
-		function handleClickOutside(event) {
+		// Закрывает список платформ при нажатии вне инпута и списка
+		const handleClickOutside = (event) => {
 			(wrapperRef.current && !wrapperRef.current.contains(event.target)) && setOpen(false);
-
 		}
 		// Вешаем слушатель нажатия кнопки мышки
 		document.addEventListener('mousedown', handleClickOutside);
 		// Отключаем слушатель при размонтировании компонента
-		return () => {
+		return () =>
 			document.removeEventListener('mousedown', handleClickOutside);
-		};
 	}, [wrapperRef]);
 
-	// Функция открытия списка платформ
+	// Открывает список платформ
 	const handleOpen = () => setOpen(true);
 
-	// Функция считывания нажатия на пункт в списке
-	const handleClick = (name) => {
-		setSelect(name)
+	// Считывает нажатия на пункты в списке платформ
+	const handleClick = (name, value) => {
+		// Заменяет название платформы на заголовке списка выбора платформы
+		setSelect(name);
+		// Закрывает список платформ
 		setOpen(false);
 
-		switch (name) {
-			case 'Platforms': {
+		// Проверяет какая платформа выбрана и формирует новый запрос на сервер
+		switch (value) {
+			case 'platforms': {
 				dispatch(stateUrl('https://rawg.io/api/games?key=3ab57b62be844a19885e0fffc9bdd397&page=1&page_size=12'));
 				break;
 			}
 
-			case 'PC': {
+			case 'pc': {
 				dispatch(stateUrl('https://rawg.io/api/games?key=3ab57b62be844a19885e0fffc9bdd397&page=1&page_size=12&platforms=4'));
 				break;
 			}
 
-			case 'Apple Macintosh': {
+			case 'apple': {
 				dispatch(stateUrl('https://rawg.io/api/games?key=3ab57b62be844a19885e0fffc9bdd397&page=1&page_size=12&platforms=5'));
 				break;
 			}
 
-			case 'Play Station': {
+			case 'ps': {
 				dispatch(stateUrl('https://rawg.io/api/games?key=3ab57b62be844a19885e0fffc9bdd397&page=1&page_size=12&platforms=187,18,16,15,27'));
 				break;
 			}
 
-			case 'XBOX': {
+			case 'xbox': {
 				dispatch(stateUrl('https://rawg.io/api/games?key=3ab57b62be844a19885e0fffc9bdd397&page=1&page_size=12&platforms=1,186,14,80'));
 				break;
 			}
@@ -90,26 +92,25 @@ const Platforms = () => {
 		}
 	}
 
-	// Выводим список платформ
+	// Выводит список платформ
 	const platformOutput = (data) => {
-		const result = data.map((item) => {
+		return data.map((item) => {
 			return <li key={item.value} onClick={() => handleClick(item.name)}>{item.name}</li>;
 		});
-
-		return result;
 	}
 
 
 	return (
 		<Select ref={wrapperRef}>
-			<div onClick={handleOpen}>{select}</div>
-			{
-				isOpen && (
-					<PlatformsList>
-						{platformOutput(platforms)}
-					</PlatformsList>
-				)
-			}
+			<div onClick={handleOpen}>
+				{select}
+			</div>
+
+			{isOpen && (
+				<PlatformsList>
+					{platformOutput(platforms)}
+				</PlatformsList>
+			)}
 		</Select>
 	);
 }

@@ -111,14 +111,15 @@ const Sort = () => {
 
 	return (
 		<Select ref={wrapperRef}>
-			<div onClick={handleOpen}>{select}</div>
-			{
-				isOpen && (
-					<SortList>
-						{sortOutput(platforms)}
-					</SortList>
-				)
-			}
+			<div onClick={handleOpen}>
+				{select}
+			</div>
+
+			{isOpen && (
+				<SortList>
+					{sortOutput(platforms)}
+				</SortList>
+			)}
 		</Select>
 	);
 }
