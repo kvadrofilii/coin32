@@ -84,8 +84,7 @@ const dateReleased = (date) => {
 const onClickImage = (number, setModalIsActive, setImageNumber) => {
 	setImageNumber(number);
 	setModalIsActive(true);
-	const body = document.body;
-	body.style.overflowY = 'hidden';
+	document.body.style.overflow = 'hidden';
 };
 
 
