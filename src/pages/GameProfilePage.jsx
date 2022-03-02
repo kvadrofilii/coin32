@@ -76,8 +76,11 @@ const Screenshots = styled.div`
 `;
 
 const dateReleased = (date) => {
-	const americanDate = date.split('-');
-	const result = `${americanDate[2]}.${americanDate[1]}.${americanDate[0]}`;
+	let result = '-';
+	if (date) {
+		const americanDate = date.split('-');
+		result = `${americanDate[2]}.${americanDate[1]}.${americanDate[0]}`;
+	}
 	return result;
 };
 
