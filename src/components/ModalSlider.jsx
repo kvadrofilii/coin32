@@ -54,42 +54,63 @@ const Image = styled.img`
 	cursor: pointer;
 `;
 
+// Переключаем на предыдущий слайд
+const prevSlide = (slide, images, setSlide) => {
+	(slide === 0) ? setSlide(images.length - 1) : setSlide(slide - 1);
+}
+
+// Переключаем на следующий слайд
+const nextSlide = (slide, images, setSlide) => {
+	(slide === images.length - 1) ? setSlide(0) : setSlide(slide + 1);
+}
+
+// Закрываем слайдер
+const closeSlider = (setModalIsActive) => {
+	setModalIsActive(false);
+	document.body.style.overflow = '';
+}
+
 const ModalSlider = (props) => {
 	const { active, setModalIsActive, screenshots, imageNumber } = props;
+	// Массив с адресами скриншотов
 	const images = screenshots.results;
+	// Текущий слайд для отображения
 	const [slide, setSlide] = useState(imageNumber);
 
 	// Получаем номер слайда для отображения при открытии слайдера
 	useEffect(() => {
 		setSlide(imageNumber);
-	}, [imageNumber])
+	}, [imageNumber]);
 
-	// Переключаем на предыдущий слайд
-	const prevSlide = () => {
-		(slide === 0) ? setSlide(images.length - 1) : setSlide(slide - 1);
-	}
-
-	// Переключаем на следующий слайд
-	const nextSlide = () => {
-		(slide === images.length - 1) ? setSlide(0) : setSlide(slide + 1);
-	}
-
-	const closeSlider = () => {
-		setModalIsActive(false);
-		const body = document.body;
-		body.style.overflowY = '';
-	}
+	useEffect(() => {
+		// Вызываем функцию закрытия слайдера, если нажата кнопка Escape
+		const handleClickEscape = (event) => {
+			(event.code === 'Escape') && closeSlider(setModalIsActive);
+		};
+		// Вешаем слушатель нажатия кнопок на клавиатуре
+		document.addEventListener('keydown', handleClickEscape);
+		// Отключаем слушатель при размонтировании компонента
+		return () =>
+			document.removeEventListener('keydown', handleClickEscape);
+	}, [setModalIsActive]);
 
 	return (
 		<Wrapper active={active} >
-			<ButtonClose onClick={closeSlider}>X</ButtonClose>
+			<ButtonClose onClick={() => closeSlider(setModalIsActive)}>
+				X
+			</ButtonClose>
 
 			<Control>
-				<Button onClick={prevSlide}>&#060;</Button>
-				<Button onClick={nextSlide}>&#062;</Button>
+				<Button onClick={() => prevSlide(slide, images, setSlide)}>
+					&#060;
+				</Button>
+				<Button onClick={() => nextSlide(slide, images, setSlide)}>
+					&#062;
+				</Button>
 			</Control>
+
 			<Content>
-				<Image src={images[slide].image} onClick={nextSlide} />
+				<Image src={images[slide].image} onClick={() => nextSlide(slide, images, setSlide)} />
 			</Content>
 		</Wrapper>
 	);
