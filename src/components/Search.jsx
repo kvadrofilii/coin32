@@ -14,14 +14,13 @@ const SearchList = styled(SelectUl)`
 
 
 const Search = () => {
-	const [error, setError] = useState(null);
 	const [games, setGames] = useState({});
 	const [value, setValue] = useState('');
 	const [isOpen, setOpen] = useState(false);
 	const [list, setList] = useState(false);
 	const wrapperRef = useRef(null);
 
-	// Функция открытия списка игр при нажатии на input
+	// Открывает список найденных игр при нажатии на input
 	const handleOpen = () => setOpen(true);
 
 	useEffect(() => {
@@ -33,33 +32,27 @@ const Search = () => {
 					setGames(result);
 				},
 				(error) => {
-					setError(error);
+					console.log(error);
 				}
-			)
-
-		error && console.log(error);
-	}, [value, error]);
+			);
+	}, [value]);
 
 	useEffect(() => {
-		// Функция закрывает список найденных игр при нажатии вне инпута и списка
-		function handleClickOutside(event) {
+		// Закрывает список найденных игр при нажатии вне инпута и списка
+		const handleClickOutside = (event) => {
 			(wrapperRef.current && !wrapperRef.current.contains(event.target)) && setOpen(false);
-		}
-
+		};
 		// Вешаем слушатель нажатия кнопки мышки
 		document.addEventListener('mousedown', handleClickOutside);
 		// Отключаем слушатель при размонтировании компонента
-		return () => {
+		return () =>
 			document.removeEventListener('mousedown', handleClickOutside);
-		};
 	}, [wrapperRef]);
 
-	// Функция считывания нажатия на пункт в списке
-	const handleClick = () => {
-		setOpen(false);
-	}
+	// Считываем нажатия на пункты в списке найденных игр и закрываем список
+	const handleClick = () => setOpen(false);
 
-	// Функция поиска по списку
+	// Формирует список из найденных игр
 	const search = (event) => {
 		setValue(event.target.value);
 		const gamesList = games.results;
@@ -86,13 +79,11 @@ const Search = () => {
 				placeholder={'Search games'}
 			/>
 
-			{
-				isOpen && (
-					<SearchList>
-						{list}
-					</SearchList>
-				)
-			}
+			{isOpen && (
+				<SearchList>
+					{list}
+				</SearchList>
+			)}
 
 		</Wrapper>
 	);
