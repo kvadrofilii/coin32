@@ -83,16 +83,20 @@ const ModalSlider = (props) => {
 	}, [imageNumber]);
 
 	useEffect(() => {
-		// Вызываем функцию закрытия слайдера, если нажата кнопка Escape
 		const handleClickEscape = (event) => {
+			// Вызывает функцию закрытия слайдера, если нажата кнопка Escape
 			(event.code === 'Escape') && closeSlider(setModalIsActive);
+			// Вызывает функцию переключения слайдера, если нажата стрелка влево
+			(event.code === 'ArrowLeft') && prevSlide(slide, images, setSlide);
+			// Вызывает функцию переключения слайдера, если нажата стрелка вправо
+			(event.code === 'ArrowRight') && nextSlide(slide, images, setSlide);
 		};
 		// Вешаем слушатель нажатия кнопок на клавиатуре
 		document.addEventListener('keydown', handleClickEscape);
 		// Отключаем слушатель при размонтировании компонента
 		return () =>
 			document.removeEventListener('keydown', handleClickEscape);
-	}, [setModalIsActive]);
+	}, [images, setModalIsActive, slide]);
 
 	return (
 		<Wrapper active={active} >
