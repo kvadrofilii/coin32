@@ -27,3 +27,7 @@
 ## Особым плюсом будет:
 - Реализация в виде SSR-приложения на Next.js
 - Вёрстка с использованием styled components
+
+![Screenshot](screenshot-1.png "Screenshot")
+
+![Screenshot](screenshot-2.png "Screenshot")
