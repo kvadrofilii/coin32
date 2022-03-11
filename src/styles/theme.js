@@ -2,7 +2,8 @@ export const baseTheme = {
 	colors: {
 		bg: '#151515',
 		font: '#fff',
-		dark: '#202020'
+		dark: '#202020',
+		light: '#fff'
 	},
 
 	media: {
