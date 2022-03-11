@@ -5,10 +5,13 @@ import { Container } from '../styles/layouts/Container';
 import Pagination from '../components/Pagination';
 import { useLocation } from 'react-router-dom';
 import { Main } from '../styles/layouts/Main';
+import { useSelector } from 'react-redux';
 
 const Layout = () => {
 	// Получаю информацию об адресе страницы
 	const location = useLocation();
+	// Переменные для: данных с играми, состояния загрузки и адреса для загрузки данных с сервера
+	const { isLoaded } = useSelector((state) => state.games);
 
 	return (
 		<>
@@ -18,8 +21,8 @@ const Layout = () => {
 					<Outlet />
 				</Container>
 			</Main>
-			{/*Если страница главная, то вывожу кнопки пагинации*/}
-			{location.pathname === '/' && <Pagination />}
+			{/*Если загрузка закончилась и страница главная, то вывожу кнопки пагинации*/}
+			{!isLoaded && (location.pathname === '/' && <Pagination />)}
 			<Footer />
 		</>
 	);

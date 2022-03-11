@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { baseTheme } from '../styles/theme';
 import { A } from '../styles/components/A';
 import ModalSlider from '../components/ModalSlider';
+import Spinner from '../components/Spinner';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -138,7 +139,7 @@ const GameProfilePage = () => {
 
 
 	if (isLoaded) {
-		return <div>Loading...</div>;
+		return <Spinner />;
 	}
 
 	return (
