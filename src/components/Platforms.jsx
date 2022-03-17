@@ -95,7 +95,7 @@ const Platforms = () => {
 	// Выводит список платформ
 	const platformOutput = (data) => {
 		return data.map((item) => {
-			return <li key={item.value} onClick={() => handleClick(item.name)}>{item.name}</li>;
+			return <li key={item.value} onClick={() => handleClick(item.name, item.value)}>{item.name}</li>;
 		});
 	}
 
