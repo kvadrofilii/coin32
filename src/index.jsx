@@ -3,18 +3,21 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './styles/global';
-import { BrowserRouter } from 'react-router-dom';
+//import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './app/store';
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/*<BrowserRouter>*/}
+    <HashRouter>
       <Provider store={store}>
         <GlobalStyles />
         <App />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
+    {/*</BrowserRouter>*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
