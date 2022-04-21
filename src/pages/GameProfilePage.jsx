@@ -21,6 +21,7 @@ const Image = styled.img`
 	object-position: center top;
 	object-fit: cover;
 	border-radius: 10px;
+	cursor: pointer;
 `;
 
 const ImageScreenshot = styled(Image)`
