@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/coin32/static/js/main.995876e1.js",
+    "static/js/787.f706f302.chunk.js": "/coin32/static/js/787.f706f302.chunk.js",
+    "index.html": "/coin32/index.html",
+    "main.995876e1.js.map": "/coin32/static/js/main.995876e1.js.map",
+    "787.f706f302.chunk.js.map": "/coin32/static/js/787.f706f302.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.995876e1.js"
+  ]
+}
