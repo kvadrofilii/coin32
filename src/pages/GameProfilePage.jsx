@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { baseTheme } from '../styles/theme';
 import { A } from '../styles/components/A';
-import ModalSlider from '../components/ModalSlider';
+import ModalSlider from '../components/ModalSlider/ModalSlider';
 import Spinner from '../components/Spinner';
 
 const Wrapper = styled.div`
@@ -21,11 +21,11 @@ const Image = styled.img`
 	object-position: center top;
 	object-fit: cover;
 	border-radius: 10px;
-	cursor: pointer;
 `;
 
 const ImageScreenshot = styled(Image)`
 	height: 150px;
+	cursor: pointer;
 `;
 
 const ContentWrapper = styled.div`
