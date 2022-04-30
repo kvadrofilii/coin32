@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import GameCard from '../components/GameCard';
+import GameCard from '../components/GameCard/GameCard';
 import Spinner from '../components/Spinner';
 import styled from 'styled-components';
 import { baseTheme } from '../styles/theme';
