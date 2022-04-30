@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Header from './Header';
+import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { Container } from '../styles/layouts/Container';
 import Pagination from '../components/Pagination/Pagination';
