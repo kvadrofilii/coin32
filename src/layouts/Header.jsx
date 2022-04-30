@@ -6,7 +6,7 @@ import Search from '../components/Search/Search';
 import { Link } from 'react-router-dom';
 import Platforms from '../components/Platforms/Platforms';
 import { useLocation } from 'react-router-dom';
-import Sort from '../components/Sort';
+import Sort from '../components/Sort/Sort';
 
 const Wrapper = styled.header`
 	width: 100%;
