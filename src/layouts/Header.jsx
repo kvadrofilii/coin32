@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { baseTheme } from '../styles/theme';
 import { Container } from '../styles/layouts/Container';
 import { Logo } from '../styles/components/Logo';
-import Search from '../components/Search';
+import Search from '../components/Search/Search';
 import { Link } from 'react-router-dom';
 import Platforms from '../components/Platforms/Platforms';
 import { useLocation } from 'react-router-dom';
