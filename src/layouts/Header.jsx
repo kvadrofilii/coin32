@@ -4,7 +4,7 @@ import { Container } from '../styles/layouts/Container';
 import { Logo } from '../styles/components/Logo';
 import Search from '../components/Search';
 import { Link } from 'react-router-dom';
-import Platforms from '../components/Platforms';
+import Platforms from '../components/Platforms/Platforms';
 import { useLocation } from 'react-router-dom';
 import Sort from '../components/Sort';
 
