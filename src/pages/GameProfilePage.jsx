@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { baseTheme } from '../styles/theme';
 import { A } from '../styles/components/A';
 import ModalSlider from '../components/ModalSlider/ModalSlider';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/Spinner/Spinner';
 
 const Wrapper = styled.div`
 	display: flex;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import GameCard from '../components/GameCard/GameCard';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/Spinner/Spinner';
 import styled from 'styled-components';
 import { baseTheme } from '../styles/theme';
 import { useDispatch, useSelector } from 'react-redux';
